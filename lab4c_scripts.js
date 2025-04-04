@@ -1,15 +1,17 @@
-getCurrentDate = function() {
+function getCurrentDate() {
     const now = new Date();
-    const dateNow = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const dateString = now.toLocaleDateString('en-US', dateNow);
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateString = now.toLocaleDateString('en-US', options);
     const timeString = now.toLocaleTimeString('en-US', { 
         hour: '2-digit', 
         minute: '2-digit', 
         hour12: true 
     });
 
-    document.getElementById('dateDisplay').innerHTML = `Today is ${dateString}.<br> The current time is ${timeString}.`;
-};
+    document.getElementById('dateDisplay').innerHTML = `Today is ${dateString}.<br>The current time is ${timeString}.`;
+}
+
+document.getElementById('currentDateButton').addEventListener('click', getCurrentDate);
 
 function findStudent() {
     let lfstudent_sNumber = parseInt(document.getElementById("searchStudent").value);                                                               // Gets the value sa ga pa input sng "searchStudent"
