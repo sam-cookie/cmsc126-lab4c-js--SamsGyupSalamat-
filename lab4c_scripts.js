@@ -14,9 +14,11 @@ function createStudent(studentNumber, name, age, email, course) {
 
 let studentArray = [];
 
+const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 function time_now() {
     const now = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dayString = weekday[now.getDay()]
+    const options = {year: 'numeric', month: 'long', day: 'numeric' };
     const dateString = now.toLocaleDateString('en-US', options);
     const timeString = now.toLocaleTimeString('en-US', { 
         hour: '2-digit', 
@@ -24,7 +26,7 @@ function time_now() {
         hour12: true 
     });
 
-    document.getElementById('dateDisplay').innerHTML = `Today is ${dateString}.<br>The current time is ${timeString}.`;
+    document.getElementById('dateDisplay').innerHTML = `Today is ${dateString}, ${dayString}.<br>The current time is ${timeString}.`;
 }
 
 document.getElementById('currentDateButton').addEventListener('click', time_now);
