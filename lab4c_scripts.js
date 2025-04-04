@@ -129,6 +129,7 @@ function display_list(){
             <th>Name</th>
             <th>Age</th>
             <th>Email</th>
+            <th>Course</th>
         </tr>
     `;
 
@@ -139,6 +140,7 @@ function display_list(){
                 <td>${student.name}</td>
                 <td>${student.age}</td>
                 <td>${student.email}</td>
+                <td>${student.course}</td>
             </tr>
         `;
     });
