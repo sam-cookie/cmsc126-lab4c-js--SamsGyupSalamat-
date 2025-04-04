@@ -119,4 +119,32 @@ function add_student() {
     } 
 }
 
+function display_list(){
+    const container = document.getElementById("displaytablecontainer");
+
+    let table = "<table>";
+    table += `
+        <tr>
+            <th>Student Number</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        </tr>
+    `;
+
+    studentArray.forEach(student => {
+        table += `
+            <tr>
+                <td>${student.studentNumber}</td>
+                <td>${student.name}</td>
+                <td>${student.age}</td>
+                <td>${student.email}</td>
+            </tr>
+        `;
+    });
+
+    table += "</table>";
+    container.innerHTML = table;
+}
+
 document.getElementById("searchButton").addEventListener("click", findStudent);
