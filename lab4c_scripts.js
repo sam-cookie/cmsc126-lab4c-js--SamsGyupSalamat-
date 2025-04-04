@@ -1,3 +1,16 @@
+getCurrentDate = function() {
+    const now = new Date();
+    const dateNow = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateString = now.toLocaleDateString('en-US', dateNow);
+    const timeString = now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        hour12: true 
+    });
+
+    document.getElementById('dateDisplay').innerHTML = `Today is ${dateString}.<br> The current time is ${timeString}.`;
+};
+
 function findStudent() {
     let lfstudent_sNumber = parseInt(document.getElementById("searchStudent").value);                                                               // Gets the value sa ga pa input sng "searchStudent"
     let resultDiv = document.getElementById("searchResult");                                                                                        // Stores the div na may id "searchResult" para ma manipulate later
