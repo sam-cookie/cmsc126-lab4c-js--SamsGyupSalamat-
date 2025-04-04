@@ -109,14 +109,33 @@ function findStudent() {
     }
 
     if (lfstudent) {                                                                                                                                // manipulation of div in js not in html
-        resultDiv.innerHTML = `
-            <h4>Student Found:</h4>
-            <p><strong>Student Number:</strong> ${lfstudent.studentNumber}</p>
-            <p><strong>Name:</strong> ${lfstudent.name}</p>
-            <p><strong>Age:</strong> ${lfstudent.age}</p>
-            <p><strong>UP Mail:</strong> ${lfstudent.upmail}</p>
-            <p><strong>Course:</strong> ${lfstudent.course}</p>
+       const tableSearch = document.getElementById("searchResult");
+       let table = "<table>";
+       table += `
+            <tr>
+            <th>Student Number</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Course</th>
+        </tr>
         `;
+
+        studentArray.forEach(student => {
+            table += `
+                <tr>
+                    <td>${student.studentNumber}</td>
+                    <td>${student.name}</td>
+                    <td>${student.age}</td>
+                    <td>${student.email}</td>
+                    <td>${student.course}</td>
+                </tr>
+            `;
+        });
+        
+        table += "</table>";
+        tableSearch.innerHTML = table;
+
     } else {
         resultDiv.innerHTML = "<p style='color:red;'>Student not found.</p>";
     }
