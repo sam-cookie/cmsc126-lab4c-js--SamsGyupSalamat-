@@ -11,6 +11,7 @@
                 font-size: 2.3vw; 
             }
         </style>
+        <script src="lab4c_scripts.js"></script>
     </head>
     <body>
         <div style="text-align: center; margin-top: 20px;">
@@ -48,7 +49,7 @@
             </div>
             <br>
 
-            <button type="button" id="submitButton">Submit</button>
+            <button onclick = "add_student()" type="button" id="submitButton">Submit</button>
 
             <br><br>
             <h2>Search Student</h2>
@@ -60,11 +61,13 @@
             </div>
             <br>
 
-            <button type="button" id="searchButton">Search</button>
+            <button onclick = "find_student()" type="button" id="searchButton">Search</button>
+            <p id = "foundstudent"></p>
 
             <br><br>
             <h2>Display Student</h2>
-            <button type="button" id="displayAll">Display All Students</button>
+            <button onclick="display_list()" type="button" id="displayAll">Display All Students</button>
+            <p id="displaylist"></p>
         </div>
 
         <script src="lab4c_scripts.js"></script> 
