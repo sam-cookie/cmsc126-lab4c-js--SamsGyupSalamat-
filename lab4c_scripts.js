@@ -1,16 +1,39 @@
-const Student = {
-    studentNumber: 0,
-    name: "",
-    age: 0,
-    email: "",
-    course: ""
+// const Student = {
+//     studentNumber: 0,
+//     name: "",
+//     age: 0,
+//     email: "",
+//     course: ""
+// }
+
+const studentNumbers = [];
+class Student{
+    constructor(name, age, email, course){
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.course = course;
+        let number = "2023" + Math.floor((Math.random() * 99999) + 10000);
+        while(true){
+            let stop = true;
+            for(const x in studentNumbers){
+                if(number == x){
+                    stop = false;
+                }
+            }
+            if(stop){
+                break;
+            }   
+            number = "2023" + Math.floor((Math.random() * 99999) + 10000);
+        }
+        studentNumbers.push(number);
+        this.studentNumber = number;
+    }
 }
 
-function createStudent(studentNumber, name, age, email, course) {
-    return {
-        studentNumber, name, age, email, course
-    };
-}
+// function Student(studentNumber, name, age, email, course) {
+//     this.studentNumber = 
+// }
 
 let studentArray = [];
 
@@ -69,24 +92,25 @@ function add_student() {
     }
 
     if(validName == true && validAge == true && validEmail == true){
-        Student.studentNumber = "2023" + Math.floor((Math.random() * 99999) + 10000);
-        Student.name = name;
-        Student.age = age;
-        Student.email = email;
-        Student.course = course;
+        // Student.studentNumber = "2023" + Math.floor((Math.random() * 99999) + 10000);
+        // Student.name = name;
+        // Student.age = age;
+        // Student.email = email;
+        // Student.course = course;
 
-        let newStudent = createStudent(Student.studentNumber, Student.name, Student.age, Student.email, Student.course);
+        // let newStudent = createStudent(Student.studentNumber, Student.name, Student.age, Student.email, Student.course);
+        let newStudent = new Student(name, age, email, course);
         studentArray.push(newStudent);
 
         for(i = 0; i < studentArray.length; i++){
             console.log(studentArray[i]);
         }
 
-        alert("The following student has been added:\nStudent Number: " + Student.studentNumber + 
-            "\nName: " + Student.name + 
-            "\nAge: " + Student.age + 
-            "\nEmail: " + Student.email + 
-            "\nCourse: " + Student.course);
+        alert("The following student has been added:\nStudent Number: " + newStudent.studentNumber + 
+            "\nName: " + newStudent.name + 
+            "\nAge: " + newStudent.age + 
+            "\nEmail: " + newStudent.email + 
+            "\nCourse: " + newStudent.course);
     } 
 }
 
@@ -109,14 +133,37 @@ function findStudent() {
     }
 
     if (lfstudent) {                                                                                                                                // manipulation of div in js not in html
-        resultDiv.innerHTML = `
-            <h4>Student Found:</h4>
-            <p><strong>Student Number:</strong> ${lfstudent.studentNumber}</p>
-            <p><strong>Name:</strong> ${lfstudent.name}</p>
-            <p><strong>Age:</strong> ${lfstudent.age}</p>
-            <p><strong>UP Mail:</strong> ${lfstudent.upmail}</p>
-            <p><strong>Course:</strong> ${lfstudent.course}</p>
+       const tableSearch = document.getElementById("searchResult");
+       let table = "<table>";
+
+        studentArray.forEach(student => {
+            table += `
+            <tr>
+                <th>Student Number</th>
+                <td>${student.studentNumber}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>${student.name}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>${student.age}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>${student.email}</td>
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td>${student.course}</td>
+            </tr>       
         `;
+        });
+        
+        table += "</table>";
+        tableSearch.innerHTML = table;
+
     } else {
         resultDiv.innerHTML = "<p style='color:red;'>Student not found.</p>";
     }
